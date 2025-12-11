@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultats de la recherche</title>
+</head>
+<body>
+    <h1>Résultats de la recherche</h1>
+    <div id="results"></div>
+
+    <script>
+        
+        // 3.2.0 Requête réceptionnant les caractères recherchés non-encadrée
+        //       | Le terme 'searchTerm' est dédoublé
+        const searchTerm = req.query.q;
+        // 3.2.1 Récupération de la requête en Javascript
+        //       | 
+        const searchTerm = new URLSearchParams(window.location.search).get('q');
+        
+        const escapeHTMLTermSearch = escapeHTML(searchTerm);
+        const resultsContainer = document.getElementById('results');
+
+        resultsContainer.textContent = `Résultats pour "${escapeHTMLTermSearch}"`;
+    </script>
+</body>
+</html>
